@@ -6,15 +6,13 @@ st.title('UFlix Movie Recommender AI')
 mList = pickle.load(open('movies.pkl','rb'))
 mList = mList['title'].values
 
-option = st.selectbox(
+selectedMovie = st.selectbox(
     'How would you like to be contacted?',
     mList)
 
-st.write('You selected:', option)
+st.write('You selected:', selectedMovie)
 
 import streamlit as st
 
-if st.button('Say hello'):
-    st.write('Why hello there')
-else:
-    st.write('Goodbye')
+if st.button('Recommend'):
+    st.write(selectedMovie)
