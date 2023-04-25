@@ -1,18 +1,11 @@
 import streamlit as st
 import pandas as pd
 import pickle
-st.title('UFlix Movie Recommender AI')
+movies_d = pickle.load(open('movies_d.pkl','rb'))
+movies = pd.DataFrame(movies_d)
+st.title('uFlix Movie Recommender AI')
+option = st.selectbox(
+    'SElect a Movie you like',
+    movies['title'].values)
 
-mList = pickle.load(open('movies.pkl','rb'))
-mList = mList['title'].values
-
-selectedMovie = st.selectbox(
-    'How would you like to be contacted?',
-    mList)
-
-st.write('You selected:', selectedMovie)
-
-import streamlit as st
-
-if st.button('Recommend'):
-    st.write(selectedMovie)
+st.write('You selected:', option)
